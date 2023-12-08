@@ -1,0 +1,17 @@
+version: '3'
+services:
+  fastify:
+    build:
+      context: ./tp1/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://localhost:27017/tasks
+
+  mongodb:
+    image: mongo:4.4.27-rc0
+    ports:
+      - 27017:27017
